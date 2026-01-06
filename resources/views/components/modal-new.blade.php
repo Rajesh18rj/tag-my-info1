@@ -20,7 +20,7 @@
     <button type="button"
             class="absolute -top-10 right-3 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-all shadow"
             onclick="openModal('createModal_{{ $slug }}')">
-        + Add {{ $title }}
+        + Add
     </button>
 
     @if($items->count())

@@ -261,7 +261,7 @@
             const btn = this;
             const profileId = btn.dataset.id;
 
-            fetch(`/profiles/${profileId}/toggle-public`, {
+            fetch("{{ url('/profiles') }}/" + profileId + "/toggle-public", {
                 method: 'POST',
                 headers: {
                     'X-CSRF-TOKEN': '{{ csrf_token() }}',
