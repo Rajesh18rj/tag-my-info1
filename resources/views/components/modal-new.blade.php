@@ -12,16 +12,55 @@
     $baseUrl = rtrim($baseUrl ?? '', '/');
 @endphp
 
-<fieldset class="ml-1 relative border-2 border-red-400 rounded-lg p-6 shadow-md bg-gray-50 max-w-5xl mx-auto mb-4">
-    <legend class="text-red-700 font-semibold mb-2 bg-red-100 px-3 py-1 rounded-md shadow-sm inline-block">
-        {{ $title }}
+<fieldset class="ml-1 relative group
+                max-w-6xl mx-auto mb-6
+                overflow-hidden
+                rounded-[2.75rem]
+                p-8 md:p-10
+                bg-gradient-to-br
+                from-white/90 via-white/80 to-red-50/50
+                backdrop-blur-2xl
+                border border-red-300/40
+                shadow-[0_30px_80px_rgba(220,38,38,0.22)]
+                transition-all duration-700
+                hover:shadow-[0_45px_120px_rgba(220,38,38,0.35)]
+                hover:-translate-y-[2px]">
+
+    <!-- LEGEND -->
+    <legend class="relative inline-flex items-center gap-3
+                   text-sm font-semibold tracking-wide
+                   text-gray-900
+                   px-5 py-2
+                   rounded-2xl
+                   bg-white/70
+                   backdrop-blur-md
+                   border border-red-200/70
+                   shadow-[0_10px_25px_rgba(220,38,38,0.15)]">
+        <i class="fas fa-layer-group text-xs text-red-600"></i>
+        <span>{{ $title }}</span>
     </legend>
 
+    <!-- ADD BUTTON -->
     <button type="button"
-            class="absolute -top-10 right-3 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-all shadow"
+            class="absolute -top-3 right-8
+               inline-flex items-center gap-2
+               px-2 py-1
+               rounded-2xl
+               text-sm font-semibold
+               text-white
+               bg-gradient-to-r from-red-500 to-rose-500
+               shadow-[0_12px_30px_rgba(220,38,38,0.45)]
+               ring-8 ring-white/80
+               hover:shadow-[0_18px_45px_rgba(220,38,38,0.6)]
+               hover:scale-[1.05]
+               active:scale-[0.96]
+               transition-all duration-300"
             onclick="openModal('createModal_{{ $slug }}')">
-        + Add
+
+        <i class="fas fa-plus text-xs"></i>
+        <span>Add</span>
     </button>
+
 
     @if($items->count())
         <div class="hidden sm:flex justify-between font-bold text-black border-b-2 border-red-200 pb-2 mb-3 px-4">

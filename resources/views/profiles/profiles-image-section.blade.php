@@ -1,30 +1,89 @@
 @if($profile->id)
-    <div class="mb-6 max-w-sm flex items-center gap-6">
-        <img
-            src="{{ $profile->profile_image
-                   ? asset('storage/' . $profile->profile_image)
-                   : asset('empty.jpg') }}"
-            alt="Profile Image"
-            class="w-24 h-24 object-cover rounded-full border border-gray-300 shadow-sm"
-            loading="lazy"
-        >
+    <div
+        x-data="{
+        preview: '{{ $profile->profile_image
+            ? asset('storage/' . $profile->profile_image)
+            : asset('images/empty.png') }}',
+        selected: false
+    }"
+        class="mb-8 max-w-md"
+    >
 
-        <div class="flex-grow">
-            <label for="profile_image" class="block mb-2 font-semibold text-gray-700 text-lg">
-                Profile Image
-            </label>
-            <input
-                type="file"
-                name="profile_image"
-                id="profile_image"
-                accept="image/*"
-                class="w-full border border-gray-300 rounded-lg px-4 py-2 text-gray-700
-focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
-            >
+        <h4 class="text-lg font-semibold text-gray-800 mb-3">
+            Profile Image
+        </h4>
 
-            @error('profile_image')
-            <p class="mt-2 text-sm font-medium text-red-600">{{ $message }}</p>
-            @enderror
+        <div class="flex items-center gap-6">
+
+            <!-- Avatar -->
+            <div class="relative group">
+                <img
+                    :src="preview"
+                    class="w-20 h-20 rounded-full object-cover
+                       border-2 border-gray-300 shadow-md
+                       transition-transform duration-300
+                       group-hover:scale-105"
+                >
+
+                <!-- Hover overlay -->
+                <label
+                    for="profile_image"
+                    class="absolute inset-0 rounded-full
+                       bg-black/40 opacity-0
+                       group-hover:opacity-100
+                       flex items-center justify-center
+                       cursor-pointer
+                       transition-all duration-300"
+                >
+                    <i class="fas fa-camera text-white text-xl"></i>
+                </label>
+            </div>
+
+            <!-- Controls -->
+            <div class="flex flex-col gap-2">
+
+                <!-- Upload Button -->
+                <label
+                    for="profile_image"
+                    class="inline-flex items-center gap-2
+                       px-3 py-1.5 rounded-xl
+                       font-semibold text-sm
+                       bg-red-600 text-white
+                       shadow
+                       hover:bg-red-700
+                       hover:shadow-lg
+                       transition-all
+                       cursor-pointer"
+                >
+                    <i class="fas fa-upload"></i>
+                    <span x-text="selected ? 'Change Photo' : 'Upload Photo'"></span>
+                </label>
+
+                <!-- Helper Text -->
+                <p class="text-[10px] text-gray-500">
+                    JPG, PNG, JPEG • Max 2MB
+                </p>
+
+                <!-- Hidden Input -->
+                <input
+                    type="file"
+                    name="profile_image"
+                    id="profile_image"
+                    accept="image/*"
+                    class="hidden"
+                    @change="
+                    preview = URL.createObjectURL($event.target.files[0]);
+                    selected = true
+                "
+                >
+
+                @error('profile_image')
+                <p class="text-sm font-medium text-red-600">
+                    {{ $message }}
+                </p>
+                @enderror
+            </div>
+
         </div>
     </div>
 @endif

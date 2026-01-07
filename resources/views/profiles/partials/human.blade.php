@@ -1,9 +1,36 @@
 <div id="HumanFields" class="hidden space-y-4 text-gray-600">
 
-    <fieldset class="border-2 border-red-400 rounded-lg p-6 shadow-md bg-gray-50 ">
-        <legend class="text-red-700 font-semibold mb-2 bg-red-100 px-3 py-1 rounded-md shadow-sm inline-block">
-            Personal Info
+    <fieldset class="relative group
+                overflow-hidden
+                rounded-[2.75rem]
+                p-8 md:p-10
+                bg-gradient-to-br
+                from-white/90 via-white/80 to-red-50/50
+                backdrop-blur-2xl
+                border border-red-300/40
+                shadow-[0_30px_80px_rgba(220,38,38,0.22)]
+                transition-all duration-700
+                hover:shadow-[0_45px_120px_rgba(220,38,38,0.35)]
+                hover:-translate-y-[2px]">
+
+        <legend class="relative inline-flex items-center gap-3
+               text-sm font-semibold tracking-wide
+               text-gray-900
+               px-5 py-2
+               rounded-2xl
+               bg-white/70
+               backdrop-blur-md
+               border border-red-200/70
+               shadow-[0_10px_25px_rgba(220,38,38,0.15)]">
+
+            <!-- icon -->
+            <i class="fas fa-user text-xs text-red-600"></i>
+
+            <!-- text -->
+            <span>Personal Info</span>
         </legend>
+
+
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 ">
 
             <div>
@@ -68,10 +95,36 @@
         </div>
     </fieldset>
 
-    <fieldset class="border-2 border-red-400 rounded-lg p-6 shadow-md bg-gray-50">
-        <legend class="text-red-700 font-semibold mb-2 bg-red-100 px-3 py-1 rounded-md shadow-sm inline-block">
-            Address
+    <fieldset class="relative group
+                overflow-hidden
+                rounded-[2.75rem]
+                p-8 md:p-10
+                bg-gradient-to-br
+                from-white/90 via-white/80 to-red-50/50
+                backdrop-blur-2xl
+                border border-red-300/40
+                shadow-[0_30px_80px_rgba(220,38,38,0.22)]
+                transition-all duration-700
+                hover:shadow-[0_45px_120px_rgba(220,38,38,0.35)]
+                hover:-translate-y-[2px]">
+
+        <legend class="relative inline-flex items-center gap-3
+               text-sm font-semibold tracking-wide
+               text-gray-900
+               px-5 py-2
+               rounded-2xl
+               bg-white/70
+               backdrop-blur-md
+               border border-red-200/70
+               shadow-[0_10px_25px_rgba(220,38,38,0.15)]">
+
+            <!-- icon -->
+            <i class="fas fa-map-marker-alt text-xs text-red-600"></i>
+
+            <!-- text -->
+            <span>Address</span>
         </legend>
+
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
                 <label for="city_human" class="block font-medium mb-1">City</label>
@@ -97,10 +150,36 @@
     </fieldset>
 
 
-    <fieldset class="border-2 border-red-400 rounded-lg p-6 shadow-md bg-gray-50">
-        <legend class="text-red-700 font-semibold mb-2 bg-red-100 px-3 py-1 rounded-md shadow-sm inline-block">
-            Notes
+    <fieldset class="relative group
+                overflow-hidden
+                rounded-[2.75rem]
+                p-8 md:p-10
+                bg-gradient-to-br
+                from-white/90 via-white/80 to-red-50/50
+                backdrop-blur-2xl
+                border border-red-300/40
+                shadow-[0_30px_80px_rgba(220,38,38,0.22)]
+                transition-all duration-700
+                hover:shadow-[0_45px_120px_rgba(220,38,38,0.35)]
+                hover:-translate-y-[2px]">
+
+        <legend class="relative inline-flex items-center gap-3
+               text-sm font-semibold tracking-wide
+               text-gray-900
+               px-5 py-2
+               rounded-2xl
+               bg-white/70
+               backdrop-blur-md
+               border border-red-200/70
+               shadow-[0_10px_25px_rgba(220,38,38,0.15)]">
+
+            <!-- icon -->
+            <i class="fas fa-sticky-note text-xs text-red-600"></i>
+
+            <!-- text -->
+            <span>Notes</span>
         </legend>
+
         <textarea name="human_notes" rows="4"
                   class="w-full text-gray-400 border border-gray-300 rounded-md px-3 py-2 focus:ring-red-500 focus:border-red-500">{{ old('human_notes', $profile->notes) }}</textarea>
     </fieldset>
